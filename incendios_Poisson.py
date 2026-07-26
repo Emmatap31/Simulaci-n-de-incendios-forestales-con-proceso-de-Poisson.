@@ -101,7 +101,7 @@ def simulacion(direccion, T):
     suma = 0
     for i in range(n):
         for j in range(n):
-            for t in range(T):
+            for t in range(1,T+1):
                 suma += intensidad(t, i, j)
     media = suma
     print(f"Media: {media}")
@@ -118,7 +118,7 @@ def simulacion(direccion, T):
         max = 0
         for i in range(n):
             for j in range(n):
-                for t in range(T):
+                for t in range(1,T+1):
                     pr = proba(t,i,j)
                     if pr > max:
                         max = pr
@@ -199,7 +199,7 @@ def simulacion(direccion, T):
     proba_acumulada = []
     sum = 0
 
-    for t in range(T):
+    for t in range(1,T+1):
         dim2 = []
         for i in range(n):
             dim3 = []
@@ -222,7 +222,7 @@ def simulacion(direccion, T):
     for K in range(N):
         bandera = False
         u = np.random.uniform(0,1)
-        for t in range(T):
+        for t in range(1,T+1):
             for i in range(n):
                 for j in range(n):
                     if u<=proba_acumulada[t,i,j]:
@@ -238,7 +238,7 @@ def simulacion(direccion, T):
     print(f"Ubucaciones de los incendios : {ubicaciones}")  
 
     #Simulación de propagación de incencios desde el tiempo 1 hasta el tiempo T(definido por el usuario)
-    for t in range(T+1):
+    for t in range(1,T+1):
         for i in range(n):
             for j in range(n):
                 # Se busca si en este tiempo se inicia un incendio y en que lugar
@@ -292,6 +292,6 @@ def simulacion(direccion, T):
 #Ejemplo de simulación:
 # Parámetros:
 #   direccion : S
-#   T : 20
+#   T : 50
 
 simulacion("S", 50)
